@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "../mybatis-3-mapper.dtd" >
+<mapper namespace="dao.GoodsDao">
+         <!-- 商品相关操作 -->
+   <!-- <insert id="insertpath" >
+   		insert into Photo values(photo_seq.nextval,#{house_id},#{path})
+   </insert> -->
+   <!-- <insert id="insert" parameterType="House">
+      insert into House values(house_seq.nextval,#{category_id},#{user_id},#{house_name},#{house_type},#{house_area},#{house_address},#{live_number},#{room_number},#{room_sheshi},#{house_price},#{house_describe},#{house_state})
+   </insert> -->
+<!--    <select id="getfid" resultType="java.lang.Integer">
+     select house_seq.currval from dual
+   </select>
+   查询最新发布的六条房屋
+   <resultMap id="houseresultMap1" type="House">
+     <id property="house_id" column="house_id"/>
+    <collection property="photo" ofType="com.zufangwang.entity.Photo">
+      <result column="photo_path" property="photo_path"/>
+    </collection>
+   </resultMap>
+   <select id="newest" resultMap="houseresultMap1">
+    select h.house_id,
+		p.photo_path 
+		from house h 
+			left join photo p 
+			on h.house_id=p.house_id
+				where p.photo_id in 
+					(select min(photo_id) from photo group by house_id) 
+				and rowNum&lt;=6 order by h.house_id desc
+   </select> -->
+   
+  <!--查询单条信息  -->
+    <!-- <resultMap id="GoodstMap" type="Goods">
+     <id property="goods_id" column="goods_id"/>
+	   <result property="goods_name" column="goods_name"/>
+	   <result property="goods_changjia" column="goods_changjia"/>
+	   <result property="goods_guige" column="goods_guige"/>
+	   <result property="goods_price" column="goods_price"/>
+	   <result property="goods_picture" column="goods_picture"/>
+	   <result property="goods_pihao" column="goods_pihao"/>
+	   <result property="goods_tiaoma" column="goods_tiaoma"/>
+    <collection property="photo" ofType="com.zufangwang.entity.Photo">
+      <result column="photo_path" property="photo_path"/>
+    </collection>
+   </resultMap>
+	<select id="selectone" resultMap="GoodstMap">
+	  select g.goods_id as goods_id,
+	         g.goods_name as goods_name,
+	         g.goods_changjia as goods_changjia,
+	         g.goods_guige as goods_guige,
+	         g.goods_price as goods_price,
+	         g.goods_picture as goods_picture,
+	         g.goods_pihao as goods_pihao,
+	         g.goods_tiaoma as goods_tiaoma,     
+	  	from Goods g  where g.goods_tiaoma = #{goods_tiaoma}
+	</select>   -->
+	<select id="selectone" resultType="Goods">
+    select * from Goods where goods_tiaoma = #{goods_tiaoma}
+    </select>
+</mapper>
